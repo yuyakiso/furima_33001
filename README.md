@@ -21,7 +21,7 @@
 ｜------------- | ----------- | ------------------------------ |
 ｜ item_name    | string      | null false                     |
 ｜ message      | text        | null false                     |
-｜ category_id  | integer     | null false                  |
+｜ category_id  | integer     | null false                     |
 ｜ schedule_id  | integer     | null false                     |
 ｜ area_id      | integer     | null false                     |
 ｜ day_id       | integer     | null false                     |
@@ -41,16 +41,17 @@
 ### Association 
 - belongs_to :user
 - belongs_to item
-- has_one :customer_addresses
+- has_one :customer_address
 
 ## customer_addressesテーブル
 ｜ Column         | Type       | Option                        |
 ｜ -------------- | ---------- | ----------------------------- |
-｜ postal code    | string     | null false                    |
+｜ postal_code    | string     | null false                    |
 ｜ prefecture_id  | integer    | null false                    |
 ｜ city           | string     | null false                    |
 ｜ address        | string     | null false                    |
 ｜ build          | string     |                               |
+| phone_number    | integer    | null false                    |
 ｜ buy_log        | references | null false, foreign key :true |
 
 ### Association 
