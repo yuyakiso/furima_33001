@@ -1,5 +1,6 @@
 # README
 
+<<<<<<< HEAD
 ## usersテーブル
 ｜ Column            | Type   | Option      |
 ｜------------------ | ------ | ----------- |
@@ -57,3 +58,27 @@
 
 ### Association 
 - belongs_to buy_log
+=======
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+>>>>>>> parent of 31d38f8... Revert "Revert "first commit && data-base ready""
