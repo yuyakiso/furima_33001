@@ -17,20 +17,22 @@
 - has_many :buy_logs
 
 ## itemsテーブル
-｜ Column       | Type        | Option                         |
-｜------------- | ----------- | ------------------------------ |
-｜ item_name    | string      | null false                     |
-｜ message      | text        | null false                     |
-｜ category_id  | integer     | null false                     |
-｜ schedule_id  | integer     | null false                     |
-｜ area_id      | integer     | null false                     |
-｜ day_id       | integer     | null false                     |
-｜ price        | integer     | null false                     |
-｜ user         | references  | null: false, foreign_key: true |
+｜ Column        | Type        | Option                         |
+｜-------------- | ----------- | ------------------------------ |
+｜ name          | string      | null false                     |
+｜ message       | text        | null false                     |
+｜ status_id     | integer     | null false                     |
+| charge_id      | integer     | null false                     |
+｜ category_id   | integer     | null false                     |
+｜ schedule_id   | integer     | null false                     |
+｜ prefecture_id | integer     | null false                     |
+｜ day_id        | integer     | null false                     |
+｜ price         | integer     | null false                     |
+｜ user          | references  | null: false, foreign_key: true |
 
 ### Association
 - has_one buy_log
-- belongs_to user
+- belongs_to :user
 
 ## buy_logsテーブル
 ｜ Column | Type       | Option                        |
