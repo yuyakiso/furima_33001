@@ -20,7 +20,8 @@
 ｜ Column        | Type        | Option                         |
 ｜-------------- | ----------- | ------------------------------ |
 ｜ name          | string      | null false                     |
-｜ message       | text        | null false                     |｜ category_id   | integer     | null false                     |
+｜ message       | text        | null false                     |
+｜ category_id   | integer     | null false                     |
 ｜ status_id     | integer     | null false                     |
 | charge_id      | integer     | null false                     |
 ｜ schedule_id   | integer     | null false                     |
@@ -29,7 +30,7 @@
 ｜ user          | references  | null: false, foreign_key: true |
 
 ### Association
-- has_one buy_log
+- has_one :buy_log
 - belongs_to :user
 
 ## buy_logsテーブル
@@ -55,4 +56,4 @@
 ｜ buy_log        | references | null false, foreign key :true |
 
 ### Association 
-- belongs_to buy_log
+- belongs_to :buy_log
