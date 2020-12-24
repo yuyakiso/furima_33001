@@ -47,17 +47,17 @@ describe User do
       it 'passwordは全角では登録できない' do
         @user.password = "テスト１２３４"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
       it 'passwordは半角数字のみでは登録できない' do
         @user.password = "12345678"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
       it 'passwordは半角英語のみでは登録できない' do
         @user.password = "testtest"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
       it 'passwordが存在してもpassword_confirmationが存在しなしと登録できない' do
         @user.password = "test1234"
