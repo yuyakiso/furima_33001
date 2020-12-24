@@ -6,7 +6,7 @@ class User < ApplicationRecord
   
   with_options presence: true do
     validates :email, uniqueness: { case_sensitive: false }
-    validates :password, format: { with: /\A[a-z0-9]+\z/i}
+    validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
     validates :nickname
     validates :birth_day
   end

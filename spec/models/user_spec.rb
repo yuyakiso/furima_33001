@@ -9,14 +9,6 @@ describe User do
       it "nickname, email, password, password_confirmation, family_name, first_name, family_name_kana, first_name_kana, birth_dayが存在すれば登録できる" do
         expect(@user).to be_valid
       end
-      it "family_name_kanaは全角カタカナ入力で登録ができる" do
-        @user.family_name_kana = "カタカナ"
-        expect(@user).to be_valid
-      end
-      it "first_name_kanaは全角カタカナ入力で登録できる" do
-        @user.first_name_kana = "カタカナ"
-        expect(@user).to be_valid
-      end
     end
 
     context '新規登録が上手くいかないとき' do
