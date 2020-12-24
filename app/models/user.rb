@@ -6,12 +6,19 @@ class User < ApplicationRecord
   
   with_options presence: true do
     validates :email, uniqueness: { case_sensitive: false }
-    validates :nickname, 
-    validates :family_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
-    validates :first_name, format: { with: /\A[ぁ-んァ-ン一-龥]/}
-    validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/}
-    validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/}
+    validates :password, format: { with: /\A[a-z0-9]+\z/i}
+    validates :nickname
     validates :birth_day
+  end
+
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/} do
+    validates :family_name
+    validates :first_name
+  end
+
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/} do
+    validates :family_name_kana
+    validates :first_name_kana
   end
 
   has_many :items
