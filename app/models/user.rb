@@ -5,13 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   with_options presence: true do
-    validates :email, uniqueness: { case_sensitive: false }
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
     validates :nickname
     validates :birth_day
   end
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/} do
+  with_options presence: true, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/} do
     validates :family_name
     validates :first_name
   end
@@ -21,6 +20,6 @@ class User < ApplicationRecord
     validates :first_name_kana
   end
 
-  has_many :items
-  has_many :buy_logs
+  #has_many :items
+  #has_many :buy_logs
 end
