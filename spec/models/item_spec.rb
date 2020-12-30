@@ -37,10 +37,22 @@ describe Item do
         expect(@item.errors.full_messages).to include("Category must be other than 0")
       end
 
+      it 'category_idが空だと登録できない' do
+        @item.category_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category can't be blank")
+      end
+
       it 'status_idが０だと登録できない' do
         @item.status_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Status must be other than 0")
+      end
+
+      it 'status_idが空だと登録できない' do
+        @item.status_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status can't be blank")
       end
 
       it 'charge_idが０だと登録できない' do
@@ -49,16 +61,34 @@ describe Item do
         expect(@item.errors.full_messages).to include("Charge must be other than 0")
       end
 
+      it 'charge_idが空だと登録できない' do
+        @item.charge_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Charge can't be blank")
+      end
+
       it 'schedule_idが０だと登録できない' do
         @item.schedule_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Schedule must be other than 0")
       end
 
+      it 'schedule_idが空だと登録できない' do
+        @item.schedule_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Schedule can't be blank")
+      end
+
       it 'prefecture_idが０だと登録できない' do
         @item.prefecture_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture must be other than 0")
+      end
+
+      it 'prefecture_idが空だと登録できない' do
+        @item.prefecture_id = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
       it 'priceが空だと登録できない' do
@@ -81,6 +111,18 @@ describe Item do
 
       it 'priceが全角数字だと登録できない' do
         @item.price = "１０００"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'priceが半角英数混合では登録できない' do
+        @item.price = "10test"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+
+      it 'priceが半角英数では登録できない' do
+        @item.price = "test"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
