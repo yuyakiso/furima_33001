@@ -1,6 +1,6 @@
 class BuyLogsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :find, only:[:index, :create]
+  before_action :item_find, only:[:index, :create]
   def index
     @order_form = OrderForm.new
     if @item.user_id == current_user.id || @item.buy_log
@@ -36,7 +36,7 @@ class BuyLogsController < ApplicationController
     )
   end
 
-  def find
+  def item_find
     @item = Item.find(params[:item_id])
   end
 end
