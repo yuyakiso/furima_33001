@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     end
 
     def edit
-      if @item.user_id != current_user.id
+      if @item.user_id != current_user.id || @item.buy_log
         redirect_to action: :index
       end
     end
@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
     end
 
     def destroy
-      if @item.user_id != current_user.id
+      if @item.user_id != current_user.id || @item.buy_log
         redirect_to action: :index
       end
       @item.destroy
