@@ -11,7 +11,6 @@ class BuyLogsController < ApplicationController
   end
   
   def create
-    @item = Item.find(params[:item_id])
     @order_form = OrderForm.new(order_form_params)
     if @order_form.valid?
       pay_item

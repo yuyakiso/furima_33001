@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe OrderForm do
   before do 
-    @order_form = FactoryBot.build(:order_form)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @order_form = FactoryBot.build(:order_form,item_id: item.id,user_id: user.id)
   end
 
   describe '購入手続き' do
@@ -92,7 +94,7 @@ describe OrderForm do
         expect(@order_form.errors.full_messages).to include("User can't be blank")
       end
 
-      it 'user_idが空だと登録できない' do
+      it 'item_idが空だと登録できない' do
         @order_form.item_id = nil
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Item can't be blank")
