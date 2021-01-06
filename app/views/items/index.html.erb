@@ -130,17 +130,15 @@
       
     <% @items.each do |item|%>
       <li class='list'>
-        <%= link_to item_path(@items.ids) do %>
+        <%= link_to item_path(item.id), method: :get do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <% if @item.present? %>
+          <% if item.buy_log.present? %>
             <div class='sold-out'>
               <span>Sold Out!!</span>
             </div>
           <% end %>
-          <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
         <div class='item-info'>
@@ -161,8 +159,7 @@
       
       
 
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+      <%# 商品がない場合のダミー商品 %>
       <% if @items.length == 0 %>
         <li class='list'>
           <%= link_to '#' do %>
@@ -182,8 +179,7 @@
           <% end %>
       <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+      <%# //商品がない場合のダミー商品 %>
     </ul>
   </div>
   <%# /商品一覧 %>

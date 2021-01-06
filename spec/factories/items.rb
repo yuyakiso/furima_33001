@@ -9,5 +9,9 @@ FactoryBot.define do
     prefecture_id  {1}
     price          {1000}
     association :user
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/apple-touch-icon.png'), filename: 'apple-touch-icon.png')
+    end
   end
 end
