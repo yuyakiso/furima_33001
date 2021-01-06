@@ -1,11 +1,9 @@
 class BuyLogsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
+  before_action :find, only:[:index, :create]
   def index
     @order_form = OrderForm.new
-    @item = Item.find(params[:item_id])
-    if @item.user_id == current_user.id
-      redirect_to root_path
-    elsif @item.buy_log
+    if @item.user_id == current_user.id || @item.buy_log
       redirect_to root_path
     end
 
@@ -37,5 +35,9 @@ class BuyLogsController < ApplicationController
       card: order_form_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def find
+    @item = Item.find(params[:item_id])
   end
 end
